@@ -8,3 +8,5 @@
 
 my_list = []
 
+for n in range(10, 50, 10):
+    print(n)

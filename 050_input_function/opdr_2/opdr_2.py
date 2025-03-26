@@ -4,4 +4,9 @@
 
 # Hier komt je code...
 
-gasten = ["Jij", ... ]
+gasten = ["Keano", "Sanne", "Kees", "Paul", "Marie" ]
+print(gasten)
+del gasten[4]
+print(gasten)
+gasten.insert(3, "George")
+print(gasten)
