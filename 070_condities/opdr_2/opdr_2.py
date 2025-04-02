@@ -8,6 +8,6 @@
 
 my_list = [43948, 878768, 38768, 87555, 765765]
 
-# for...:
-#   if...:
-#       print()
+for n in my_list: #looped de nummers in de lijst
+    if n % 3 == 0: # controleert of het getal deelbaar is door 3
+        print(n) #print de deelbare getallen

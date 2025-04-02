@@ -6,4 +6,5 @@
 
 # Hier start de for-loop
 
-my_list = []
+getal = [n*3 for n in range(1, 20)]
+print(getal[:6])

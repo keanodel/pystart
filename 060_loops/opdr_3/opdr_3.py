@@ -2,8 +2,9 @@
 # Naam student:
 # Groep:
 
-# Hier komt je code...
-
-# Hier start de for-loop
-
-my_list = []
+resultaten = []
+for n in range (3, 81, 3):
+    kwadraat = n**2
+    delen = kwadraat/3
+    resultaten.append(delen)
+print(resultaten)

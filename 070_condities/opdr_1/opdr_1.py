@@ -6,7 +6,9 @@
 
 # Hier start de for-loop....
 
-my_list = []
-
+getal = []
+for n in range(1,11):
+    if n > 4:
+        print(n)
 #for loop
 #if statement
