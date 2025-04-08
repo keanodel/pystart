@@ -2,4 +2,23 @@
 # Naam student:
 # Groep:
 
-# importeer de module csv...
+def lees_csv(bestandsnaam):
+    with open(bestandsnaam, 'r') as bestand:
+        return bestand.readlines()
+
+def schrijf_csv(bestandsnaam, data):
+    with open(bestandsnaam, 'w') as bestand:
+        for regel in data:
+            bestand.write(f"{regel}\n")
+
+from my_modules.csv import lees_csv, schrijf_csv
+
+
+data = ["Naam,Leeftijd,Stad", "Willem,30,Amsterdam", "Klaas,25,Rotterdam"]
+schrijf_csv("output.csv", data)
+
+
+gelezen_data = lees_csv("output.csv")
+print("Inhoud van het CSV-bestand:")
+for regel in gelezen_data:
+    print(regel.strip())
