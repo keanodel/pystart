@@ -1,19 +1,22 @@
-def lees_csv(bestandsnaam):
-    with open(bestandsnaam, 'r') as bestand:
-        return bestand.readlines()
+from modules.csv import get_personen, filter, print_persons
 
-def schrijf_csv(bestandsnaam, data):
-    with open(bestandsnaam, 'w') as bestand:
-        for regel in data:
-            bestand.write(f"{regel}\n")
+def main():
+    personen = get_personen()
 
+    # Test 1: Filter op voornaam met "ja"
+    print("Filter op voornaam met 'ja':")
+    gefilterd = filter(personen, "voornaam", "ja")
+    print_persons(gefilterd, filter=["voornaam", "achternaam", "plaats"])
 
-data = ["Naam,Leeftijd,Stad", "Willem,30,Amsterdam", "Klaas,25,Rotterdam"]
-schrijf_csv("output.csv", data)
+    # Test 2: Filter op voornaam met "Pie"
+    print("\nFilter op voornaam met 'Pie':")
+    gefilterd = filter(personen, "voornaam", "Pie")
+    print_persons(gefilterd, filter=["voornaam", "achternaam", "plaats"])
 
-from modules import csv
+    # Test 3: Filter op plaats met "d"
+    print("\nFilter op plaats met 'd':")
+    gefilterd = filter(personen, "plaats", "d")
+    print_persons(gefilterd, filter=["voornaam", "achternaam", "plaats"])
 
-gelezen_data = lees_csv("output.csv")
-print("Inhoud van het CSV-bestand:")
-for regel in gelezen_data:
-    print(regel.strip())
+if __name__ == "__main__":
+    main()
