@@ -1,40 +1,19 @@
-# Opdracht 1 modules
-# Naam student:
-# Groep:
+def lees_csv(bestandsnaam):
+    with open(bestandsnaam, 'r') as bestand:
+        return bestand.readlines()
 
-# import .....
-# for line in open("test.csv", 'rt'):
-#   jouw code komt hier!
-# Opdracht 1 functies
-# Naam student:
-# Groep:
+def schrijf_csv(bestandsnaam, data):
+    with open(bestandsnaam, 'w') as bestand:
+        for regel in data:
+            bestand.write(f"{regel}\n")
 
-from modules import csv  # Importeer de functie uit je module
 
-def filter(personen, filterveld, filterwaarde):
-    """
-    Filtert een lijst van personen op basis van een veld en een filterwaarde.
-    
-    :param personen: lijst van dictionaries met gegevens van personen
-    :param filterveld: het veld waarop gefilterd moet worden (bijv. 'voornaam', 'plaats')
-    :param filterwaarde: de waarde waarmee gefilterd moet worden
-    :return: gefilterde lijst van personen
-    """
-    gefilterd = []
-    for persoon in personen:
-        if persoon.get(filterveld, "").lower().startswith(filterwaarde.lower()):
-            gefilterd.append(persoon)
-    return gefilterd
+data = ["Naam,Leeftijd,Stad", "Willem,30,Amsterdam", "Klaas,25,Rotterdam"]
+schrijf_csv("output.csv", data)
 
-# Test de functie
-if __name__ == "__main__":
-    personen = get_personen()  # Haal de lijst van personen op uit je module
-    print("Filter op voornaam 'Ja':")
-    resultaat = filter(personen, "voornaam", "Ja")
-    for persoon in resultaat:
-        print(f"{persoon['voornaam']} {persoon['achternaam']}")
+from modules import csv
 
-    print("\nFilter op plaats 'd':")
-    resultaat = filter(personen, "plaats", "d")
-    for persoon in resultaat:
-        print(f"{persoon['voornaam']} {persoon['achternaam']}")
+gelezen_data = lees_csv("output.csv")
+print("Inhoud van het CSV-bestand:")
+for regel in gelezen_data:
+    print(regel.strip())

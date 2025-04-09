@@ -37,3 +37,32 @@ def schrijf_csv(bestandsnaam, data):
     with open(bestandsnaam, 'w') as bestand:
         for regel in data:
             bestand.write(f"{regel}\n")
+
+def filter(data, filterveld, filterwaarde):
+    """
+    Filtert een lijst van CSV-regels op basis van een veld en een filterwaarde.
+    """
+    header = data[0].strip().split(",")
+    if filterveld not in header:
+        raise ValueError(f"Filterveld '{filterveld}' bestaat niet in de data.")
+
+    veld_index = header.index(filterveld)
+    gefilterde_data = []
+
+    for regel in data[1:]:
+        waarden = regel.strip().split(",")
+        if waarden[veld_index].lower().startswith(filterwaarde.lower()):
+            gefilterde_data.append(regel.strip())
+
+    return gefilterde_data
+
+def get_personen():
+    """
+    Retourneert een lijst van personen als dictionaries.
+    """
+    return [
+        {"voornaam": "Jan", "achternaam": "Van Der Vliet", "plaats": "Amsterdam"},
+        {"voornaam": "Jan Jaap", "achternaam": "Siewers", "plaats": "Den Haag"},
+        {"voornaam": "Piet", "achternaam": "De Vries", "plaats": "Rotterdam"},
+        {"voornaam": "Griet", "achternaam": "Van Der Pol", "plaats": "Delft"},
+    ]
